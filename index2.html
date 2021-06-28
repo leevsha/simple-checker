@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Напишите функцию, которая сравнивает две строки и определяет являются ли они анаграммой (слова состоят из одних и
+    тех же букв). Строки получаем от пользователя с помощью 2-х методов prompt.
+    Пример:
+    Первое слово - апельсин
+    Второе слово - спаниель
+    Результат - слова "апельсин" и "спаниель" являются анаграммой. -->
+
+    
+    <!-- Write a function that compares two strings and determines if they are an anagram (words consist of one and
+     the same letters). We get the strings from the user using 2 prompt methods. -->
+
+    <script>
+        function anagramChecker() {
+            let userInput1 = prompt("Введите первое слово, которое хотите проверить аннограмность")
+            let userInput2 = prompt("Введите второе слово, которое хотите проверить аннограмность")
+            let userArray1 = userInput1.split("");
+            let userArray2 = userInput2.split("");
+            console.log(userArray1);
+            console.log(userArray2);
+            userArray1.sort();
+            userArray2.sort();
+            if(userArray1.join("") == userArray2.join(""))
+            {
+                alert(`Слова "${userInput1}" и "${userInput2}" являются анаграммой`)
+            }
+            else
+            {
+                alert(`Слова "${userInput1}" и "${userInput2}" не являются анаграммой`)
+
+            }
+        }
+        
+        anagramChecker();
+    </script>
+</body>
+
+</html>

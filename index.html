@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Создайте функцию, которая будет определять является ли введенная пользователем строка палиндромом. 
+    Палиндром - число, буквосочетание, слово или текст слева направо и справа налево читается одинаково. Например, 707, топот, оно, мадам и т.д. -->
+    <!-- Create a function that will determine if the user entered string is a palindrome.
+     A palindrome is a number, letter combination, word or text from left to right and from right to left read the same. For example, 707, madam, etc. -->
+    
+    <script>
+        function palindromeChecker() {
+            let userInput;
+            let palindrome = [];
+            while (true) {
+                userInput = prompt(`
+                Введите слово, которое хотите проверить на полидром(просьба писать все слова с маленькой буквы)
+                Напишите "stop", если хотите закончить проверку
+                `);
+                if (userInput == "stop") {
+                    break;
+                }
+                else {
+                    palindrome.push(userInput.toLowerCase());
+                }
+
+
+            }
+            for (let index = 0; index < palindrome.length; index++) {
+                const element = palindrome[index];
+                let elementReverse = element.split("").reverse().join("");
+                if (element == elementReverse) {
+                    console.log(`${element} является полидромом`);
+                }
+                else {
+                    console.log(`${element} не является полидромом`);
+                }
+            }
+
+
+        }
+        palindromeChecker();
+    </script>
+</body>
+
+</html>

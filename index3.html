@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Игра «Как стать миллионером».
+    Подумайте, как можно реализовать подобный сценарий с использованием массивов и объектов. Помните, что для каждого
+    вопроса нужно прописать: вопрос, 4 варианта ответа, правильный ответ (который будем сравнивать с тем, что ввел
+    пользователь), сумма которую выиграл пользователь. Определите минимум 5 вопросов. Вопросы с вариантами ответов вы
+    можете придумать самостоятельно, а можете воспользоваться поиском -->
+
+    <!-- Game "How to Become a Millionaire".
+   Consider how you can implement a similar scenario using arrays and objects. Remember that for each question you need to write: a question, 4 answer options, the correct answer (which we will compare with the one entered by the user), the amount that the user won. Define at least 5 questions. You can come up with multiple choice questions yourself, or you can use the search -->
+
+    <script>
+        let awards = [500, 1000, 2000, 3000, 5000, 8000, 10000, 13000, 15000, 25000, 50000, 100000, 250000, 500000, 1000000]
+
+        let questions = [
+            {
+                question: "Какой язык программирования мы сейчас изучаем?",
+                a: "A: C++",
+                b: "B: C#",
+                c: "C: JavaScript",
+                d: "D: Java",
+                answer: "c",
+                prise: awards[0]
+            },
+            {
+                question: "Сколько будет 2+2?",
+                a: "A: 5",
+                b: "B: 3",
+                c: "C: 0",
+                d: "D: 4",
+                answer: "d",
+                prise: awards[1]
+            },
+            {
+                question: "Сколько будет 2*3?",
+                a: "A: 6",
+                b: "B: 3",
+                c: "C: 0",
+                d: "D: 4",
+                answer: "a",
+                prise: awards[2]
+            },
+            {
+                question: "Сколько будет 3*3?",
+                a: "A: 6",
+                b: "B: 3",
+                c: "C: 9",
+                d: "D: 4",
+                answer: "c",
+                prise: awards[3]
+            },
+            {
+                question: "Сколько будет 5*3?",
+                a: "A: 16",
+                b: "B: 13",
+                c: "C: 15",
+                d: "D: 4",
+                answer: "c",
+                prise: awards[4]
+            },
+            {
+                question: "Сколько будет 10*3?",
+                a: "A: 60",
+                b: "B: 30",
+                c: "C: 0",
+                d: "D: 40",
+                answer: "b",
+                prise: awards[5]
+            },
+            {
+                question: "Сколько будет 2*30?",
+                a: "A: 60",
+                b: "B: 30",
+                c: "C: 50",
+                d: "D: 40",
+                answer: "a",
+                prise: awards[6]
+            },
+            {
+                question: "Сколько будет 2*0?",
+                a: "A: 6",
+                b: "B: 3",
+                c: "C: 0",
+                d: "D: 4",
+                answer: "c",
+                prise: awards[7]
+            },
+            {
+                question: "Сколько будет 5+5?",
+                a: "A: 6",
+                b: "B: 3",
+                c: "C: 10",
+                d: "D: 4",
+                answer: "c",
+                prise: awards[8]
+            },
+            {
+                question: "Сколько будет 0+3?",
+                a: "A: 6",
+                b: "B: 3",
+                c: "C: 0",
+                d: "D: 4",
+                answer: "b",
+                prise: awards[9]
+            },
+            {
+                question: "Сколько будет 1+3?",
+                a: "A: 6",
+                b: "B: 3",
+                c: "C: 0",
+                d: "D: 4",
+                answer: "d",
+                prise: awards[10]
+            },
+            {
+                question: "Сколько будет 0+0?",
+                a: "A: 6",
+                b: "B: 3",
+                c: "C: 0",
+                d: "D: 4",
+                answer: "c",
+                prise: awards[11]
+            },
+            {
+                question: "Сколько будет 6-3?",
+                a: "A: 6",
+                b: "B: 3",
+                c: "C: 0",
+                d: "D: 4",
+                answer: "b",
+                prise: awards[12]
+            },
+            {
+                question: "Сколько будет 4-2?",
+                a: "A: 6",
+                b: "B: 3",
+                c: "C: 0",
+                d: "D: 2",
+                answer: "d",
+                prise: awards[13]
+            },
+            {
+                question: "Сколько будет 150+150?",
+                a: "A: 600",
+                b: "B: 300",
+                c: "C: 220",
+                d: "D: 400",
+                answer: "b",
+                prise: awards[14]
+            },
+
+        ];
+        let sum = 0;
+        let prizeBreakpoints = [5000, 25000];
+
+        for (let i = 0; i < questions.length; i++) {
+            let userInput = prompt(
+                `${questions[i].question}
+            ${questions[i].a}
+            ${questions[i].b}
+            ${questions[i].c}
+            ${questions[i].d}`
+            ).toLowerCase();
+
+            if (userInput != questions[i].answer) {
+                if (sum >= prizeBreakpoints[1]) {
+                    sum = prizeBreakpoints[1];
+                }
+                if (sum >= prizeBreakpoints[0]) {
+                    sum = prizeBreakpoints[0];
+                }
+                if (sum < prizeBreakpoints[0]) {
+                    sum = 0;
+                }
+                alert(`Вы ошиблись. Ваш выигрыш составил: ${sum}`);
+                break;
+            };
+
+            sum = questions[i].prise;
+
+            if (i != questions.length - 1) {
+                if (!confirm(`
+                Хотите продолжить игру?
+                Ваш текущий выигрыш: ${sum}`)) {
+                    alert(`Вы получаете: ${sum}`);
+                    break;
+                }
+            }
+            else {
+                alert(`Поздравляем! Вы ответили на все вопросы. Вы выиграли ${sum}`);
+            }
+        }
+
+
+
+    </script>
+</body>
+
+</html>
